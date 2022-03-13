@@ -8,16 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @State var searchQuery = ""
-    @ObservedObject var wordList = WordList()
+    @State var isSearchSubmitted = false
+    @ObservedObject var wordsController = WordsController()
     
     var body: some View {
         NavigationView {
-            WordListView(searchQuery: $searchQuery, wordList: wordList)
+            ZStack {
+                SavedWordListView(wordsController: wordsController)
+                    .searchable(text: $searchQuery, prompt: "Define...")
+                    .onSubmit(of: .search) {
+                        wordsController.define(searchQuery)
+                        isSearchSubmitted = true
+                    }
+                if (wordsController.currentWord != nil) {
+                    NavigationLink(destination: WordView(word: wordsController.currentWord,
+                                                         onSaveFunction: { wordsController.addCurrentWord() },
+                                                         onUnsaveFunction: { wordsController.removeCurrentWord() }
+                                                        ),
+                                   isActive: $isSearchSubmitted) {
+                        EmptyView()
+                    }
+                }
+            }
         }
-        .searchable(text: $searchQuery,
-                    placement: .navigationBarDrawer(displayMode: .always),
-                    prompt: "Define...")
     }
 }
 
@@ -27,8 +43,8 @@ struct ContentView_Previews: PreviewProvider {
             ContentView()
                 .previewDevice("iPhone 12 Pro")
             
-//            ContentView()
-//                .previewDevice("iPad Pro (9.7-inch)")
+            //            ContentView()
+            //                .previewDevice("iPad Pro (9.7-inch)")
         }
     }
 }

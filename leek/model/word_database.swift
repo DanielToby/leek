@@ -8,40 +8,51 @@
 import Foundation
 
 struct WordDatabase {
-    private var currentId = 0 // Unique identifier used for both savedWords and searchedWords
     
     // Saved words are loaded from json at initialization.
-    // After, they are only added to from the searched words. JSON write also happens at that time.
+    // JSON write happens when words are added.
     // Searched words is reconstructed on every search().
     
-    private(set) var savedWords: Array<Word> = []
-    private(set) var searchedWords: Array<Word> = []
+    private(set) var words: Array<Word> = []
+    private(set) var currentWord: Word?
+
+    private var currentId = 0
     
-    mutating func expandWord(_ word: Word) {
-        if let chosenIndex = savedWords.firstIndex(where: { $0.id == word.id }) {
-            savedWords[chosenIndex].isExpanded.toggle()
-        } else if let chosenIndex = searchedWords.firstIndex(where: { $0.id == word.id }) {
-            searchedWords[chosenIndex].isExpanded.toggle()
+    private mutating func getAndIncrementId() -> Int {
+        let id = currentId
+        currentId += 1
+        return id
+    }
+    
+    mutating func setCurrentWord(_ word: String) {
+        currentWord = words.first(where: { $0.word == word })
+    }
+    
+    mutating func addCurrentWord() {
+        if var currentWord = currentWord {
+            currentWord.isSaved = true
+            words.insert(currentWord, at: 0)
+            print("Added word '\(currentWord.word)'.")
+            self.currentWord?.isSaved = true
         }
     }
     
-    mutating func searchFor(_ wordName: String) {
-        searchedWords.removeAll()
-        let searchResults = [wordName, "New", "Nickle", "Nap"]
-        for name in searchResults {
-            let phoneticSpelling = "What * ev * er"
-            let definitions = ["The meaning of a word; what it most commonly represents."]
-            searchedWords.append(Word(name: name,
-                                      phoneticSpelling: phoneticSpelling,
-                                      definitions: definitions,
-                                      id: currentId))
-            currentId += 1
+    mutating func removeCurrentWord() {
+        if let currentWord = currentWord {
+            words.removeAll(where: { $0.word == currentWord.word })
+            print("Removed word '\(currentWord.word)'.")
+            self.currentWord?.isSaved = false
         }
     }
     
-    mutating func saveWord(_ word: Word) {
-        if let chosenIndex = searchedWords.firstIndex(where: { $0.id == word.id }) {
-            savedWords.insert(searchedWords.remove(at: chosenIndex), at: 0)
+    mutating func createCurrentWord(_ word: String) {
+        let newWord = Word(word: word, id: getAndIncrementId(), isSaved: false)
+        currentWord = newWord
+    }
+    
+    mutating func addDataToCurrentWord(_ word: String, data: WordData) {
+        if (currentWord?.word == word) {
+            currentWord?.data = data
         }
     }
 }

@@ -7,31 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D32BFBC527C41F1200330F5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D32BFBC427C41F1200330F5F /* Assets.xcassets */; };
-		D32BFBC827C41F1200330F5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D32BFBC727C41F1200330F5F /* Preview Assets.xcassets */; };
-		D32BFBD927C41F8900330F5F /* CarterOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D32BFBCF27C41F8900330F5F /* CarterOne-Regular.ttf */; };
 		D32BFBDA27C41F8900330F5F /* leek_app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD027C41F8900330F5F /* leek_app.swift */; };
 		D32BFBDB27C41F8900330F5F /* word_database.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD227C41F8900330F5F /* word_database.swift */; };
 		D32BFBDC27C41F8900330F5F /* word.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD327C41F8900330F5F /* word.swift */; };
 		D32BFBDD27C41F8900330F5F /* word_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD527C41F8900330F5F /* word_view.swift */; };
-		D32BFBDE27C41F8900330F5F /* word_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD627C41F8900330F5F /* word_list.swift */; };
+		D32BFBDE27C41F8900330F5F /* words_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD627C41F8900330F5F /* words_controller.swift */; };
 		D32BFBDF27C41F8900330F5F /* content_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD727C41F8900330F5F /* content_view.swift */; };
-		D32BFBE027C41F8900330F5F /* word_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD827C41F8900330F5F /* word_list_view.swift */; };
+		D32BFBE027C41F8900330F5F /* saved_word_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD827C41F8900330F5F /* saved_word_list_view.swift */; };
+		D32BFBE827C42E1F00330F5F /* oxford_query_utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBE727C42E1F00330F5F /* oxford_query_utility.swift */; };
+		D32BFBEA27C4787400330F5F /* oxford_response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBE927C4787400330F5F /* oxford_response.swift */; };
+		D3B2806427DC1B2B00C0CA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2805D27DC1B2B00C0CA9D /* Assets.xcassets */; };
+		D3B2806527DC1B2B00C0CA9D /* CarterOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3B2805F27DC1B2B00C0CA9D /* CarterOne-Regular.ttf */; };
+		D3B2806727DC1B2B00C0CA9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */; };
+		D3E696C327DC127F006F9623 /* word_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C227DC127F006F9623 /* word_data.swift */; };
+		D3E696C527DC12C1006F9623 /* word_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C427DC12C1006F9623 /* word_example.swift */; };
+		D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C627DC12F2006F9623 /* word_sense.swift */; };
+		D3E696C927DC130B006F9623 /* word_entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C827DC130B006F9623 /* word_entry.swift */; };
+		D3E696CB27DC135F006F9623 /* lexical_category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696CA27DC135F006F9623 /* lexical_category.swift */; };
+		D3E696CD27DC1381006F9623 /* lexical_entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696CC27DC1381006F9623 /* lexical_entry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D32BFBBD27C41F0F00330F5F /* leek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leek.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D32BFBC427C41F1200330F5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D32BFBC727C41F1200330F5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D32BFBCF27C41F8900330F5F /* CarterOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CarterOne-Regular.ttf"; sourceTree = "<group>"; };
 		D32BFBD027C41F8900330F5F /* leek_app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leek_app.swift; sourceTree = "<group>"; };
 		D32BFBD227C41F8900330F5F /* word_database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_database.swift; sourceTree = "<group>"; };
 		D32BFBD327C41F8900330F5F /* word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word.swift; sourceTree = "<group>"; };
 		D32BFBD527C41F8900330F5F /* word_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_view.swift; sourceTree = "<group>"; };
-		D32BFBD627C41F8900330F5F /* word_list.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_list.swift; sourceTree = "<group>"; };
+		D32BFBD627C41F8900330F5F /* words_controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = words_controller.swift; sourceTree = "<group>"; };
 		D32BFBD727C41F8900330F5F /* content_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = content_view.swift; sourceTree = "<group>"; };
-		D32BFBD827C41F8900330F5F /* word_list_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_list_view.swift; sourceTree = "<group>"; };
-		D32BFBE127C4209400330F5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D32BFBD827C41F8900330F5F /* saved_word_list_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saved_word_list_view.swift; sourceTree = "<group>"; };
+		D32BFBE727C42E1F00330F5F /* oxford_query_utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oxford_query_utility.swift; sourceTree = "<group>"; };
+		D32BFBE927C4787400330F5F /* oxford_response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oxford_response.swift; sourceTree = "<group>"; };
+		D3B2805D27DC1B2B00C0CA9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3B2805F27DC1B2B00C0CA9D /* CarterOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CarterOne-Regular.ttf"; sourceTree = "<group>"; };
+		D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3E696C227DC127F006F9623 /* word_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_data.swift; sourceTree = "<group>"; };
+		D3E696C427DC12C1006F9623 /* word_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_example.swift; sourceTree = "<group>"; };
+		D3E696C627DC12F2006F9623 /* word_sense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_sense.swift; sourceTree = "<group>"; };
+		D3E696C827DC130B006F9623 /* word_entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_entry.swift; sourceTree = "<group>"; };
+		D3E696CA27DC135F006F9623 /* lexical_category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lexical_category.swift; sourceTree = "<group>"; };
+		D3E696CC27DC1381006F9623 /* lexical_entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lexical_entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,38 +79,23 @@
 		D32BFBBF27C41F0F00330F5F /* leek */ = {
 			isa = PBXGroup;
 			children = (
-				D32BFBE127C4209400330F5F /* Info.plist */,
+				D3B2806227DC1B2B00C0CA9D /* Preview Content */,
+				D3B2805C27DC1B2B00C0CA9D /* resources */,
+				D32BFBE627C42E1F00330F5F /* utility */,
 				D32BFBD027C41F8900330F5F /* leek_app.swift */,
-				D32BFBD127C41F8900330F5F /* model */,
 				D32BFBD427C41F8900330F5F /* views */,
-				D32BFBC427C41F1200330F5F /* Assets.xcassets */,
-				D32BFBCE27C41F8900330F5F /* fonts */,
-				D32BFBC627C41F1200330F5F /* Preview Content */,
+				D32BFBD127C41F8900330F5F /* model */,
+				D3DB0E2927CBD869006D52D0 /* controllers */,
 			);
 			path = leek;
-			sourceTree = "<group>";
-		};
-		D32BFBC627C41F1200330F5F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D32BFBC727C41F1200330F5F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D32BFBCE27C41F8900330F5F /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				D32BFBCF27C41F8900330F5F /* CarterOne-Regular.ttf */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 		D32BFBD127C41F8900330F5F /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D3E696C127DC127F006F9623 /* word */,
+				D32BFBE927C4787400330F5F /* oxford_response.swift */,
 				D32BFBD227C41F8900330F5F /* word_database.swift */,
-				D32BFBD327C41F8900330F5F /* word.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -103,12 +103,66 @@
 		D32BFBD427C41F8900330F5F /* views */ = {
 			isa = PBXGroup;
 			children = (
-				D32BFBD527C41F8900330F5F /* word_view.swift */,
-				D32BFBD627C41F8900330F5F /* word_list.swift */,
 				D32BFBD727C41F8900330F5F /* content_view.swift */,
-				D32BFBD827C41F8900330F5F /* word_list_view.swift */,
+				D32BFBD827C41F8900330F5F /* saved_word_list_view.swift */,
+				D32BFBD527C41F8900330F5F /* word_view.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		D32BFBE627C42E1F00330F5F /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				D32BFBE727C42E1F00330F5F /* oxford_query_utility.swift */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		D3B2805C27DC1B2B00C0CA9D /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3B2805D27DC1B2B00C0CA9D /* Assets.xcassets */,
+				D3B2805E27DC1B2B00C0CA9D /* fonts */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		D3B2805E27DC1B2B00C0CA9D /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D3B2805F27DC1B2B00C0CA9D /* CarterOne-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		D3B2806227DC1B2B00C0CA9D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D3DB0E2927CBD869006D52D0 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D32BFBD627C41F8900330F5F /* words_controller.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		D3E696C127DC127F006F9623 /* word */ = {
+			isa = PBXGroup;
+			children = (
+				D32BFBD327C41F8900330F5F /* word.swift */,
+				D3E696C227DC127F006F9623 /* word_data.swift */,
+				D3E696C427DC12C1006F9623 /* word_example.swift */,
+				D3E696C627DC12F2006F9623 /* word_sense.swift */,
+				D3E696C827DC130B006F9623 /* word_entry.swift */,
+				D3E696CA27DC135F006F9623 /* lexical_category.swift */,
+				D3E696CC27DC1381006F9623 /* lexical_entry.swift */,
+			);
+			path = word;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +224,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D32BFBC827C41F1200330F5F /* Preview Assets.xcassets in Resources */,
-				D32BFBD927C41F8900330F5F /* CarterOne-Regular.ttf in Resources */,
-				D32BFBC527C41F1200330F5F /* Assets.xcassets in Resources */,
+				D3B2806427DC1B2B00C0CA9D /* Assets.xcassets in Resources */,
+				D3B2806727DC1B2B00C0CA9D /* Preview Assets.xcassets in Resources */,
+				D3B2806527DC1B2B00C0CA9D /* CarterOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,13 +237,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E696CB27DC135F006F9623 /* lexical_category.swift in Sources */,
 				D32BFBDD27C41F8900330F5F /* word_view.swift in Sources */,
+				D32BFBEA27C4787400330F5F /* oxford_response.swift in Sources */,
 				D32BFBDB27C41F8900330F5F /* word_database.swift in Sources */,
 				D32BFBDF27C41F8900330F5F /* content_view.swift in Sources */,
-				D32BFBE027C41F8900330F5F /* word_list_view.swift in Sources */,
-				D32BFBDE27C41F8900330F5F /* word_list.swift in Sources */,
+				D3E696C327DC127F006F9623 /* word_data.swift in Sources */,
+				D3E696C527DC12C1006F9623 /* word_example.swift in Sources */,
+				D32BFBE027C41F8900330F5F /* saved_word_list_view.swift in Sources */,
+				D32BFBDE27C41F8900330F5F /* words_controller.swift in Sources */,
+				D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */,
+				D3E696CD27DC1381006F9623 /* lexical_entry.swift in Sources */,
+				D3E696C927DC130B006F9623 /* word_entry.swift in Sources */,
 				D32BFBDA27C41F8900330F5F /* leek_app.swift in Sources */,
 				D32BFBDC27C41F8900330F5F /* word.swift in Sources */,
+				D32BFBE827C42E1F00330F5F /* oxford_query_utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +392,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +425,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
