@@ -17,6 +17,7 @@ class WordsController: ObservableObject {
                 fatalError(error.localizedDescription)
             case .success(let words):
                 model.words = words
+                print("Loaded \(words.count) words from database.")
             }
         }
     }
@@ -44,8 +45,11 @@ class WordsController: ObservableObject {
     func saveCurrentWord() {
         model.saveCurrentWord()
         WordDatabase.save(words: model.words) { result in
-            if case .failure(let error) = result {
+            switch result {
+            case .failure(let error):
                 fatalError(error.localizedDescription)
+            case .success(let count):
+                print("Stored \(count) words in database.")
             }
         }
     }
@@ -53,8 +57,11 @@ class WordsController: ObservableObject {
     func unsaveCurrentWord() {
         model.unsaveCurrentWord()
         WordDatabase.save(words: model.words) { result in
-            if case .failure(let error) = result {
+            switch result {
+            case .failure(let error):
                 fatalError(error.localizedDescription)
+            case .success(let count):
+                print("Stored \(count) words in database.")
             }
         }
     }

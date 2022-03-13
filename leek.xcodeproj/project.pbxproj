@@ -19,6 +19,8 @@
 		D3B2806427DC1B2B00C0CA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2805D27DC1B2B00C0CA9D /* Assets.xcassets */; };
 		D3B2806527DC1B2B00C0CA9D /* CarterOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3B2805F27DC1B2B00C0CA9D /* CarterOne-Regular.ttf */; };
 		D3B2806727DC1B2B00C0CA9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */; };
+		D3B2807227DE7EEC00C0CA9D /* saved_word_list_item_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */; };
+		D3B2807427DE818700C0CA9D /* drawing_constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807327DE818700C0CA9D /* drawing_constants.swift */; };
 		D3E696C327DC127F006F9623 /* word_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C227DC127F006F9623 /* word_data.swift */; };
 		D3E696C527DC12C1006F9623 /* word_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C427DC12C1006F9623 /* word_example.swift */; };
 		D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C627DC12F2006F9623 /* word_sense.swift */; };
@@ -41,6 +43,8 @@
 		D3B2805D27DC1B2B00C0CA9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3B2805F27DC1B2B00C0CA9D /* CarterOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CarterOne-Regular.ttf"; sourceTree = "<group>"; };
 		D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saved_word_list_item_view.swift; sourceTree = "<group>"; };
+		D3B2807327DE818700C0CA9D /* drawing_constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawing_constants.swift; sourceTree = "<group>"; };
 		D3E696C227DC127F006F9623 /* word_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_data.swift; sourceTree = "<group>"; };
 		D3E696C427DC12C1006F9623 /* word_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_example.swift; sourceTree = "<group>"; };
 		D3E696C627DC12F2006F9623 /* word_sense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_sense.swift; sourceTree = "<group>"; };
@@ -105,7 +109,9 @@
 			children = (
 				D32BFBD727C41F8900330F5F /* content_view.swift */,
 				D32BFBD827C41F8900330F5F /* saved_word_list_view.swift */,
+				D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */,
 				D32BFBD527C41F8900330F5F /* word_view.swift */,
+				D3B2807327DE818700C0CA9D /* drawing_constants.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 			files = (
 				D3E696CB27DC135F006F9623 /* lexical_category.swift in Sources */,
 				D32BFBDD27C41F8900330F5F /* word_view.swift in Sources */,
+				D3B2807427DE818700C0CA9D /* drawing_constants.swift in Sources */,
 				D32BFBEA27C4787400330F5F /* oxford_response.swift in Sources */,
 				D32BFBDB27C41F8900330F5F /* word_database.swift in Sources */,
 				D32BFBDF27C41F8900330F5F /* content_view.swift in Sources */,
@@ -249,6 +256,7 @@
 				D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */,
 				D3E696CD27DC1381006F9623 /* lexical_entry.swift in Sources */,
 				D3E696C927DC130B006F9623 /* word_entry.swift in Sources */,
+				D3B2807227DE7EEC00C0CA9D /* saved_word_list_item_view.swift in Sources */,
 				D32BFBDA27C41F8900330F5F /* leek_app.swift in Sources */,
 				D32BFBDC27C41F8900330F5F /* word.swift in Sources */,
 				D32BFBE827C42E1F00330F5F /* oxford_query_utility.swift in Sources */,

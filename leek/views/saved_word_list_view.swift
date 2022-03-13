@@ -11,37 +11,36 @@ struct SavedWordListView: View {
     @ObservedObject var wordsController: WordsController
     
     var body: some View {
-        ScrollView {
-            if (wordsController.words.isEmpty) {
-                Text("Saved Words will appear here.")
-            } else {
+        if (wordsController.words.isEmpty) {
+            Text("Saved Words will appear here.")
+        } else {
+            List {
                 ForEach(wordsController.words) { word in
-                    NavigationLink(destination: WordView(word: word,
-                                                         onSaveFunction: { save(word.word) },
-                                                         onUnsaveFunction: { unsave(word.word) })) {
-                        Text(word.word)
+                    NavigationLink {
+                        WordView(word: word,
+                                 onSaveFunction: {
+                            wordsController.setCurrentWord(word.word)
+                            wordsController.saveCurrentWord()
+                        },
+                                 onUnsaveFunction: {
+                            wordsController.setCurrentWord(word.word)
+                            wordsController.unsaveCurrentWord()
+                        })
+                    } label: {
+                        SavedWordListItemView(word: word,
+                                              onSaveFunction: {
+                            wordsController.setCurrentWord(word.word)
+                            wordsController.saveCurrentWord()
+                        },
+                                              onUnsaveFunction: {
+                            wordsController.setCurrentWord(word.word)
+                            wordsController.unsaveCurrentWord()
+                            
+                        })
                     }
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Leek")
-                    .font(Font.custom("CarterOne", size: 32))
-                    .padding()
-            }
-        }
-    }
-    
-    private func save(_ word: String) {
-        wordsController.setCurrentWord(word)
-        wordsController.saveCurrentWord()
-    }
-    
-    private func unsave(_ word: String) {
-        wordsController.setCurrentWord(word)
-        wordsController.unsaveCurrentWord()
     }
     
     struct WordListView_Previews: PreviewProvider {
