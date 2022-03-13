@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @State var searchQuery = ""
     @State var isSearchSubmitted = false
     @ObservedObject var wordsController = WordsController()
@@ -25,8 +23,8 @@ struct ContentView: View {
                     }
                 if (wordsController.currentWord != nil) {
                     NavigationLink(destination: WordView(word: wordsController.currentWord,
-                                                         onSaveFunction: { wordsController.addCurrentWord() },
-                                                         onUnsaveFunction: { wordsController.removeCurrentWord() }
+                                                         onSaveFunction: { wordsController.saveCurrentWord() },
+                                                         onUnsaveFunction: { wordsController.unsaveCurrentWord() }
                                                         ),
                                    isActive: $isSearchSubmitted) {
                         EmptyView()

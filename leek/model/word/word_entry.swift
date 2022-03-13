@@ -8,6 +8,6 @@
 import Foundation
 
 struct WordEntry: Codable {
-    public var homographNumber: String
-    public var senses: Array<WordSense>
+    public var homographNumber: String?
+    public var senses: Array<WordSense>?
 }

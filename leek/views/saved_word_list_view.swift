@@ -36,12 +36,12 @@ struct SavedWordListView: View {
     
     private func save(_ word: String) {
         wordsController.setCurrentWord(word)
-        wordsController.addCurrentWord()
+        wordsController.saveCurrentWord()
     }
     
     private func unsave(_ word: String) {
         wordsController.setCurrentWord(word)
-        wordsController.removeCurrentWord()
+        wordsController.unsaveCurrentWord()
     }
     
     struct WordListView_Previews: PreviewProvider {

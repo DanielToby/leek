@@ -9,6 +9,17 @@ import Foundation
 
 class WordsController: ObservableObject {
     @Published private var model = WordDatabase()
+    
+    init() {
+        WordDatabase.load { [self] result in
+            switch result {
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            case .success(let words):
+                model.words = words
+            }
+        }
+    }
 
     var words: Array<Word> {
         return model.words
@@ -30,11 +41,21 @@ class WordsController: ObservableObject {
         }
     }
     
-    func addCurrentWord() {
-        model.addCurrentWord()
+    func saveCurrentWord() {
+        model.saveCurrentWord()
+        WordDatabase.save(words: model.words) { result in
+            if case .failure(let error) = result {
+                fatalError(error.localizedDescription)
+            }
+        }
     }
     
-    func removeCurrentWord() {
-        model.removeCurrentWord()
+    func unsaveCurrentWord() {
+        model.unsaveCurrentWord()
+        WordDatabase.save(words: model.words) { result in
+            if case .failure(let error) = result {
+                fatalError(error.localizedDescription)
+            }
+        }
     }
 }

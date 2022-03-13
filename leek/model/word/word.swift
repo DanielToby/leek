@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Word {
+struct Word: Codable {
     public var word: String
     public var data: WordData?
     public var id: Int
