@@ -22,8 +22,7 @@ struct ContentView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        Text("Leek")
-                            .font(Font.custom("CarterOne", size: 32))
+                        Text("Leek").font(Font.custom("CarterOne", size: 32))
                     }
                 }
                 .sheet(isPresented: $isSearchSubmitted) {

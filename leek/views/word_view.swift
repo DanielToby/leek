@@ -15,43 +15,63 @@ struct WordView: View {
     
     var body: some View {
         if let word = word {
-            NavigationView {
-                if let data = word.data {
-                    ScrollView {
+            if let data = word.data {
+                ScrollView {
+                    VStack(alignment: .leading) {
                         ForEach(data.lexicalEntries, id: \.lexicalCategory.id) { lexicalEntry in
-                            Section(header: Text(lexicalEntry.lexicalCategory.text).fontWeight(.bold)) {
-                                ForEach(lexicalEntry.entries, id: \.homographNumber) { entry in
-                                    ForEach(entry.senses ?? [], id: \.id) { sense in
-                                        ForEach(sense.definitions, id: \.self) { definition in
-                                            Text(definition)
+                            Text("\(lexicalEntry.lexicalCategory.text):").bold()
+                                .foregroundColor(.gray)
+                            Spacer()
+                            ForEach(lexicalEntry.entries, id: \.homographNumber) { entry in
+                                if let pronunciations = entry.pronunciations {
+                                    VStack {
+                                        ForEach(pronunciations.indices) { i in
+                                            Text("\(pronunciations[i].phoneticSpelling) (\(pronunciations[i].dialects.joined(separator: ", ")))")
+                                                .italic()
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                }
+                                
+                                Spacer()
+                                
+                                if let senses = entry.senses {
+                                    ForEach(senses.indices) { i in
+                                        ForEach(senses[i].definitions, id: \.self) { definition in
+                                            HStack {
+                                                Text("\(i + 1).")
+                                                Text(definition)
+                                            }
+                                            Spacer()
                                         }
                                     }
                                 }
                             }
                             Spacer()
                         }
-                    }
-                } else {
-                    Text("Word definition not found.")
+                    }.padding(20)
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Text(word.word)
-                            .font(.system(size: DrawingConstants.nameTextSize))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        if word.isSaved {
-                            Image(systemName: "bookmark.fill").onTapGesture {
-                                onUnsaveFunction()
+                .frame(maxWidth: .infinity)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Text(word.word)
+                                .font(Font.custom("CarterOne", size: DrawingConstants.nameTextSize))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            if word.isSaved {
+                                Image(systemName: "bookmark.fill").onTapGesture {
+                                    onUnsaveFunction()
+                                }
+                            } else {
+                                Image(systemName: "bookmark").onTapGesture {
+                                    onSaveFunction()
+                                }
                             }
-                        } else {
-                            Image(systemName: "bookmark").onTapGesture {
-                                onSaveFunction()
-                            }
-                        }
+                        }.foregroundColor(DrawingConstants.accentColor)
                     }
                 }
+            } else {
+                Text("Word definition not found.")
             }
         }
     }

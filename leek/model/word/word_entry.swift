@@ -9,5 +9,6 @@ import Foundation
 
 struct WordEntry: Codable {
     public var homographNumber: String?
+    public var pronunciations: Array<WordPronunciation>?
     public var senses: Array<WordSense>?
 }

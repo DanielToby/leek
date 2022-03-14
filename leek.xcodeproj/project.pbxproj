@@ -21,6 +21,7 @@
 		D3B2806727DC1B2B00C0CA9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */; };
 		D3B2807227DE7EEC00C0CA9D /* saved_word_list_item_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */; };
 		D3B2807427DE818700C0CA9D /* drawing_constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807327DE818700C0CA9D /* drawing_constants.swift */; };
+		D3B2807627DED75900C0CA9D /* word_pronunciation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807527DED75900C0CA9D /* word_pronunciation.swift */; };
 		D3E696C327DC127F006F9623 /* word_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C227DC127F006F9623 /* word_data.swift */; };
 		D3E696C527DC12C1006F9623 /* word_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C427DC12C1006F9623 /* word_example.swift */; };
 		D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C627DC12F2006F9623 /* word_sense.swift */; };
@@ -45,6 +46,7 @@
 		D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saved_word_list_item_view.swift; sourceTree = "<group>"; };
 		D3B2807327DE818700C0CA9D /* drawing_constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawing_constants.swift; sourceTree = "<group>"; };
+		D3B2807527DED75900C0CA9D /* word_pronunciation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_pronunciation.swift; sourceTree = "<group>"; };
 		D3E696C227DC127F006F9623 /* word_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_data.swift; sourceTree = "<group>"; };
 		D3E696C427DC12C1006F9623 /* word_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_example.swift; sourceTree = "<group>"; };
 		D3E696C627DC12F2006F9623 /* word_sense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_sense.swift; sourceTree = "<group>"; };
@@ -162,11 +164,12 @@
 			children = (
 				D32BFBD327C41F8900330F5F /* word.swift */,
 				D3E696C227DC127F006F9623 /* word_data.swift */,
-				D3E696C427DC12C1006F9623 /* word_example.swift */,
-				D3E696C627DC12F2006F9623 /* word_sense.swift */,
-				D3E696C827DC130B006F9623 /* word_entry.swift */,
-				D3E696CA27DC135F006F9623 /* lexical_category.swift */,
 				D3E696CC27DC1381006F9623 /* lexical_entry.swift */,
+				D3E696CA27DC135F006F9623 /* lexical_category.swift */,
+				D3E696C427DC12C1006F9623 /* word_example.swift */,
+				D3E696C827DC130B006F9623 /* word_entry.swift */,
+				D3E696C627DC12F2006F9623 /* word_sense.swift */,
+				D3B2807527DED75900C0CA9D /* word_pronunciation.swift */,
 			);
 			path = word;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				D32BFBE027C41F8900330F5F /* saved_word_list_view.swift in Sources */,
 				D32BFBDE27C41F8900330F5F /* words_controller.swift in Sources */,
 				D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */,
+				D3B2807627DED75900C0CA9D /* word_pronunciation.swift in Sources */,
 				D3E696CD27DC1381006F9623 /* lexical_entry.swift in Sources */,
 				D3E696C927DC130B006F9623 /* word_entry.swift in Sources */,
 				D3B2807227DE7EEC00C0CA9D /* saved_word_list_item_view.swift in Sources */,

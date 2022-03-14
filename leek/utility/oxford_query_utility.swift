@@ -11,7 +11,7 @@ func queryOxfordDefinitions(query: String, completion: @escaping (WordData) -> V
     print("Querying Oxford API for definition of '\(query)'.")
     let appId = "14ea1384"
     let appKey = "8fa1a68b06feb6f81edeec419b965e45"
-    let fields = "definitions"
+    let fields = "definitions%2Cpronunciations"
     let strictMatch = "false"
     let word_id = query.lowercased()
     if let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v2/entries/en-gb/\(word_id)?fields=\(fields)&strictMatch=\(strictMatch)") {
@@ -34,8 +34,8 @@ func queryOxfordDefinitions(query: String, completion: @escaping (WordData) -> V
                             completion(oxfordResponse.results[0])
                         }
                     }
-                } catch {
-                    print("Error deserializing data.")
+                } catch(let error) {
+                    print("Error deserializing data: \(error)")
                 }
             }
         }).resume()
