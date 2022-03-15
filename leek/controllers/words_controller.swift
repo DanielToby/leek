@@ -11,6 +11,23 @@ class WordsController: ObservableObject {
     @Published private var model = WordDatabase()
     
     init() {
+        let wordOfTheDay = "Gastropod"
+        setWordOfTheDay(wordOfTheDay)
+        loadDatabase()
+    }
+    
+    private func saveDatabase() {
+        WordDatabase.save(words: model.words) { result in
+            switch result {
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            case .success(let count):
+                print("Stored \(count) words in database.")
+            }
+        }
+    }
+    
+    private func loadDatabase() {
         WordDatabase.load { [self] result in
             switch result {
             case .failure(let error):
@@ -21,13 +38,17 @@ class WordsController: ObservableObject {
             }
         }
     }
-
+    
     var words: Array<Word> {
         return model.words
     }
     
     var currentWord: Word? {
         return model.currentWord
+    }
+    
+    var wordOfTheDay: Word? {
+        return model.wordOfTheDay
     }
     
     func setCurrentWord(_ word: String) {
@@ -40,33 +61,38 @@ class WordsController: ObservableObject {
         } else {
             model.createCurrentWord(word)
             queryOxfordDefinitions(query: word) { [weak self] data in
-                self?.model.addDataToCurrentWord(word, data: data)
+                self?.model.addDataToCurrentWord(data)
                 print("Collected data for word '\(word)'.")
             }
         }
     }
     
+    func setWordOfTheDay(_ word: String) {
+        model.createWordOfTheDay(word)
+        queryOxfordDefinitions(query: word) { [weak self] data in
+            self?.model.addDataToWordOfTheDay(data)
+            print("Collected data for word '\(word)'.")
+        }
+    }
+    
     func saveCurrentWord() {
         model.saveCurrentWord()
-        WordDatabase.save(words: model.words) { result in
-            switch result {
-            case .failure(let error):
-                fatalError(error.localizedDescription)
-            case .success(let count):
-                print("Stored \(count) words in database.")
-            }
-        }
+        saveDatabase()
     }
     
     func unsaveCurrentWord() {
         model.unsaveCurrentWord()
-        WordDatabase.save(words: model.words) { result in
-            switch result {
-            case .failure(let error):
-                fatalError(error.localizedDescription)
-            case .success(let count):
-                print("Stored \(count) words in database.")
-            }
-        }
+        saveDatabase()
     }
+    
+    func saveWordOfTheDay() {
+        model.saveWordOfTheDay()
+        saveDatabase()
+    }
+    
+    func unsaveWordOfTheDay() {
+        model.unsaveWordOfTheDay()
+        saveDatabase()
+    }
+    
 }

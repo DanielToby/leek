@@ -22,6 +22,7 @@
 		D3B2807227DE7EEC00C0CA9D /* saved_word_list_item_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */; };
 		D3B2807427DE818700C0CA9D /* drawing_constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807327DE818700C0CA9D /* drawing_constants.swift */; };
 		D3B2807627DED75900C0CA9D /* word_pronunciation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807527DED75900C0CA9D /* word_pronunciation.swift */; };
+		D3B2807827E04EB900C0CA9D /* word_of_the_day_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2807727E04EB900C0CA9D /* word_of_the_day_view.swift */; };
 		D3E696C327DC127F006F9623 /* word_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C227DC127F006F9623 /* word_data.swift */; };
 		D3E696C527DC12C1006F9623 /* word_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C427DC12C1006F9623 /* word_example.swift */; };
 		D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E696C627DC12F2006F9623 /* word_sense.swift */; };
@@ -47,6 +48,7 @@
 		D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saved_word_list_item_view.swift; sourceTree = "<group>"; };
 		D3B2807327DE818700C0CA9D /* drawing_constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawing_constants.swift; sourceTree = "<group>"; };
 		D3B2807527DED75900C0CA9D /* word_pronunciation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_pronunciation.swift; sourceTree = "<group>"; };
+		D3B2807727E04EB900C0CA9D /* word_of_the_day_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_of_the_day_view.swift; sourceTree = "<group>"; };
 		D3E696C227DC127F006F9623 /* word_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = word_data.swift; sourceTree = "<group>"; };
 		D3E696C427DC12C1006F9623 /* word_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_example.swift; sourceTree = "<group>"; };
 		D3E696C627DC12F2006F9623 /* word_sense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_sense.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				D32BFBD727C41F8900330F5F /* content_view.swift */,
+				D3B2807727E04EB900C0CA9D /* word_of_the_day_view.swift */,
 				D32BFBD827C41F8900330F5F /* saved_word_list_view.swift */,
 				D3B2807127DE7EEC00C0CA9D /* saved_word_list_item_view.swift */,
 				D32BFBD527C41F8900330F5F /* word_view.swift */,
@@ -258,6 +261,7 @@
 				D32BFBDE27C41F8900330F5F /* words_controller.swift in Sources */,
 				D3E696C727DC12F2006F9623 /* word_sense.swift in Sources */,
 				D3B2807627DED75900C0CA9D /* word_pronunciation.swift in Sources */,
+				D3B2807827E04EB900C0CA9D /* word_of_the_day_view.swift in Sources */,
 				D3E696CD27DC1381006F9623 /* lexical_entry.swift in Sources */,
 				D3E696C927DC130B006F9623 /* word_entry.swift in Sources */,
 				D3B2807227DE7EEC00C0CA9D /* saved_word_list_item_view.swift in Sources */,

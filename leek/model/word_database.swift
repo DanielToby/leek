@@ -14,6 +14,7 @@ struct WordDatabase {
     // 'currentWord' is stored in memory and represents the current searched / opened word (saved or otherwise)
     
     var words: [Word] = []
+    private(set) var wordOfTheDay: Word?
     private(set) var currentWord: Word?
     private var currentId = 0
     
@@ -70,20 +71,28 @@ struct WordDatabase {
         return id
     }
     
-    mutating func setCurrentWord(_ word: String) {
-        currentWord = words.first(where: { $0.word == word })
+    mutating func createWordOfTheDay(_ word: String) {
+        wordOfTheDay = Word(word: word, id: getAndIncrementId(), isSaved: false)
     }
     
+    mutating func addDataToWordOfTheDay(_ data: WordData) {
+        wordOfTheDay?.data = data
+    }
+    
+    mutating func setCurrentWord(_ word: String) {
+        if (wordOfTheDay?.word == word) {
+            currentWord = wordOfTheDay
+        } else {
+            currentWord = words.first(where: { $0.word == word })
+        }
+    }
     
     mutating func createCurrentWord(_ word: String) {
-        let newWord = Word(word: word, id: getAndIncrementId(), isSaved: false)
-        currentWord = newWord
+        currentWord = Word(word: word, id: getAndIncrementId(), isSaved: false)
     }
     
-    mutating func addDataToCurrentWord(_ word: String, data: WordData) {
-        if (currentWord?.word == word) {
-            currentWord?.data = data
-        }
+    mutating func addDataToCurrentWord(_ data: WordData) {
+        currentWord?.data = data
     }
     
     mutating func saveCurrentWord() {
@@ -92,6 +101,10 @@ struct WordDatabase {
             words.insert(currentWord, at: 0)
             print("Added word '\(currentWord.word)'.")
             self.currentWord?.isSaved = true
+            
+            if currentWord.word == wordOfTheDay?.word {
+                wordOfTheDay?.isSaved = true;
+            }
         }
     }
     
@@ -100,6 +113,36 @@ struct WordDatabase {
             words.removeAll(where: { $0.word == currentWord.word })
             print("Removed word '\(currentWord.word)'.")
             self.currentWord?.isSaved = false
+            
+            if currentWord.word == wordOfTheDay?.word {
+                wordOfTheDay?.isSaved = false;
+            }
+        }
+    }
+    
+    mutating func saveWordOfTheDay() {
+        if var wordOfTheDay = wordOfTheDay {
+            wordOfTheDay.isSaved = true
+            words.insert(wordOfTheDay, at: 0)
+            print("Added word '\(wordOfTheDay.word)'.")
+            self.wordOfTheDay?.isSaved = true
+            
+            if wordOfTheDay.word == currentWord?.word {
+                currentWord?.isSaved = true;
+            }
+        }
+    }
+    
+    mutating func unsaveWordOfTheDay() {
+        if var wordOfTheDay = wordOfTheDay {
+            wordOfTheDay.isSaved = false
+            words.removeAll(where: { $0.word == wordOfTheDay.word })
+            print("Removed word '\(wordOfTheDay.word)'.")
+            self.wordOfTheDay?.isSaved = false
+            
+            if wordOfTheDay.word == currentWord?.word {
+                currentWord?.isSaved = false;
+            }
         }
     }
 }

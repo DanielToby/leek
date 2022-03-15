@@ -9,29 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     @State var searchQuery = ""
-    @State var isSearchSubmitted = false
+    @State var isSheetVisible = false
     @ObservedObject var wordsController = WordsController()
     
     var body: some View {
         NavigationView {
-            SavedWordListView(wordsController: wordsController)
-                .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always), prompt: "Define...")
-                .onSubmit(of: .search) {
-                    wordsController.define(searchQuery)
-                    isSearchSubmitted = true
-                }
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Text("Leek").font(Font.custom("CarterOne", size: 32))
+            VStack {
+                WordOfTheDayView(word: wordsController.wordOfTheDay,
+                                 onSaveFunction: wordsController.saveWordOfTheDay,
+                                 onUnsaveFunction: wordsController.unsaveWordOfTheDay)
+                    .onTapGesture(perform: {
+                        if let word = wordsController.wordOfTheDay {
+                            wordsController.setCurrentWord(word.word)
+                            isSheetVisible = true;
+                        }
+                    })
+                    .padding(20)
+                
+                SavedWordListView(wordsController: wordsController)
+                    .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always), prompt: "Define...")
+                    .onSubmit(of: .search) {
+                        wordsController.define(searchQuery)
+                        isSheetVisible = true
                     }
-                }
-                .sheet(isPresented: $isSearchSubmitted) {
-                    NavigationView {
-                        WordView(word: wordsController.currentWord,
-                                 onSaveFunction: { wordsController.saveCurrentWord() },
-                                 onUnsaveFunction: { wordsController.unsaveCurrentWord() })
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            Text("Leek").font(Font.custom("CarterOne", size: 32))
+                        }
                     }
-                }
+                    .sheet(isPresented: $isSheetVisible) {
+                        NavigationView {
+                            WordView(word: wordsController.currentWord,
+                                     onSaveFunction: { wordsController.saveCurrentWord() },
+                                     onUnsaveFunction: { wordsController.unsaveCurrentWord() })
+                        }
+                    }
+            }
         }
     }
 }
