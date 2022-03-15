@@ -35,10 +35,14 @@ class WordsController: ObservableObject {
     }
     
     func define(_ word: String) {
-        model.createCurrentWord(word)
-        queryOxfordDefinitions(query: word) { [weak self] data in
-            self?.model.addDataToCurrentWord(word, data: data)
-            print("Collected data for word '\(word)'.")
+        if (model.words.contains(where: { $0.word == word })) {
+            model.setCurrentWord(word)
+        } else {
+            model.createCurrentWord(word)
+            queryOxfordDefinitions(query: word) { [weak self] data in
+                self?.model.addDataToCurrentWord(word, data: data)
+                print("Collected data for word '\(word)'.")
+            }
         }
     }
     
