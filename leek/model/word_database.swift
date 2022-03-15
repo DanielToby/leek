@@ -13,7 +13,7 @@ struct WordDatabase {
     // JSON write happens when words are added / removed.
     // 'currentWord' is stored in memory and represents the current searched / opened word (saved or otherwise)
     
-    var words: [Word] = []
+    private(set) var words: [Word] = []
     private(set) var wordOfTheDay: Word?
     private(set) var currentWord: Word?
     private var currentId = 0
@@ -64,11 +64,20 @@ struct WordDatabase {
             }
         }
     }
-
+    
     private mutating func getAndIncrementId() -> Int {
         let id = currentId
         currentId += 1
         return id
+    }
+    
+    mutating func setWords(_ words: [Word]) {
+        for word in words {
+            if word.word == wordOfTheDay?.word {
+                wordOfTheDay?.isSaved = true;
+            }
+        }
+        self.words = words
     }
     
     mutating func createWordOfTheDay(_ word: String) {

@@ -12,8 +12,8 @@ class WordsController: ObservableObject {
     
     init() {
         let wordOfTheDay = "Gastropod"
-        setWordOfTheDay(wordOfTheDay)
         loadDatabase()
+        createWordOfTheDay(wordOfTheDay)
     }
     
     private func saveDatabase() {
@@ -33,7 +33,7 @@ class WordsController: ObservableObject {
             case .failure(let error):
                 fatalError(error.localizedDescription)
             case .success(let words):
-                model.words = words
+                model.setWords(words)
                 print("Loaded \(words.count) words from database.")
             }
         }
@@ -55,6 +55,14 @@ class WordsController: ObservableObject {
         model.setCurrentWord(word)
     }
     
+    func createWordOfTheDay(_ word: String) {
+        model.createWordOfTheDay(word)
+        queryOxfordDefinitions(query: word) { [weak self] data in
+            self?.model.addDataToWordOfTheDay(data)
+            print("Collected data for word '\(word)'.")
+        }
+    }
+    
     func define(_ word: String) {
         if (model.words.contains(where: { $0.word == word })) {
             model.setCurrentWord(word)
@@ -64,14 +72,6 @@ class WordsController: ObservableObject {
                 self?.model.addDataToCurrentWord(data)
                 print("Collected data for word '\(word)'.")
             }
-        }
-    }
-    
-    func setWordOfTheDay(_ word: String) {
-        model.createWordOfTheDay(word)
-        queryOxfordDefinitions(query: word) { [weak self] data in
-            self?.model.addDataToWordOfTheDay(data)
-            print("Collected data for word '\(word)'.")
         }
     }
     

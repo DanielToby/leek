@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SavedWordListView: View {
     @ObservedObject var wordsController: WordsController
+    @Binding var isSheetVisible: Bool
     
     var body: some View {
         if (wordsController.words.isEmpty) {
@@ -16,28 +17,15 @@ struct SavedWordListView: View {
         } else {
             List {
                 ForEach(wordsController.words) { word in
-                    NavigationLink {
-                        WordView(word: word,
-                                 onSaveFunction: {
+                    SavedWordListItemView(word: word,
+                                          onSaveFunction: wordsController.saveCurrentWord,
+                                          onUnsaveFunction: wordsController.unsaveCurrentWord
+                    )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
                             wordsController.setCurrentWord(word.word)
-                            wordsController.saveCurrentWord()
-                        },
-                                 onUnsaveFunction: {
-                            wordsController.setCurrentWord(word.word)
-                            wordsController.unsaveCurrentWord()
-                        })
-                    } label: {
-                        SavedWordListItemView(word: word,
-                                              onSaveFunction: {
-                            wordsController.setCurrentWord(word.word)
-                            wordsController.saveCurrentWord()
-                        },
-                                              onUnsaveFunction: {
-                            wordsController.setCurrentWord(word.word)
-                            wordsController.unsaveCurrentWord()
-                            
-                        })
-                    }
+                            isSheetVisible = true
+                        }
                 }
             }
         }

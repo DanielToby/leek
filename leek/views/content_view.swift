@@ -18,18 +18,19 @@ struct ContentView: View {
                 WordOfTheDayView(word: wordsController.wordOfTheDay,
                                  onSaveFunction: wordsController.saveWordOfTheDay,
                                  onUnsaveFunction: wordsController.unsaveWordOfTheDay)
-                    .onTapGesture(perform: {
+                    .contentShape(Rectangle())
+                    .onTapGesture {
                         if let word = wordsController.wordOfTheDay {
                             wordsController.setCurrentWord(word.word)
                             isSheetVisible = true;
                         }
-                    })
-                    .padding(20)
+                    }
                 
-                SavedWordListView(wordsController: wordsController)
+                SavedWordListView(wordsController: wordsController, isSheetVisible: $isSheetVisible)
                     .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always), prompt: "Define...")
                     .onSubmit(of: .search) {
-                        wordsController.define(searchQuery)
+                        let cleanedQuery = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
+                        wordsController.define(cleanedQuery)
                         isSheetVisible = true
                     }
                     .toolbar {
@@ -40,8 +41,8 @@ struct ContentView: View {
                     .sheet(isPresented: $isSheetVisible) {
                         NavigationView {
                             WordView(word: wordsController.currentWord,
-                                     onSaveFunction: { wordsController.saveCurrentWord() },
-                                     onUnsaveFunction: { wordsController.unsaveCurrentWord() })
+                                     onSaveFunction: wordsController.saveCurrentWord,
+                                     onUnsaveFunction: wordsController.unsaveCurrentWord)
                         }
                     }
             }
