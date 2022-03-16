@@ -7,9 +7,8 @@
 import Foundation
 
 struct Word: Codable {
-    public var word: String
+    public var id: String
     public var data: WordData?
-    public var id: Int
     public var isSaved: Bool
 }
 

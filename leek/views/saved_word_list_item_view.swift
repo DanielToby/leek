@@ -10,22 +10,21 @@ import SwiftUI
 
 struct SavedWordListItemView: View {
     let word: Word
-    let onSaveFunction: () -> Void
-    let onUnsaveFunction: () -> Void
+    let onToggleSave: () -> Void
     
     var body: some View {
         VStack {
             HStack {
-                Text(word.word)
+                Text(word.id)
                     .font(.system(size: DrawingConstants.listItemTextSize))
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 if word.isSaved {
                     Image(systemName: "bookmark.fill").onTapGesture {
-                        onUnsaveFunction()
+                        onToggleSave()
                     }.foregroundColor(DrawingConstants.accentColor)
                 } else {
                     Image(systemName: "bookmark").onTapGesture {
-                        onSaveFunction()
+                        onToggleSave()
                     }.foregroundColor(DrawingConstants.accentColor)
                 }
             }.padding(10)

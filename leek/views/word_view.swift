@@ -10,8 +10,7 @@ import SwiftUI
 
 struct WordView: View {
     let word: Word?
-    let onSaveFunction: () -> Void
-    let onUnsaveFunction: () -> Void
+    let onToggleSave: () -> Void
     
     var body: some View {
         if let word = word {
@@ -55,16 +54,16 @@ struct WordView: View {
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         HStack {
-                            Text(word.word)
+                            Text(word.id)
                                 .font(Font.custom("CarterOne", size: DrawingConstants.nameTextSize))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             if word.isSaved {
                                 Image(systemName: "bookmark.fill").onTapGesture {
-                                    onUnsaveFunction()
+                                    onToggleSave()
                                 }
                             } else {
                                 Image(systemName: "bookmark").onTapGesture {
-                                    onSaveFunction()
+                                    onToggleSave()
                                 }
                             }
                         }.foregroundColor(DrawingConstants.accentColor)

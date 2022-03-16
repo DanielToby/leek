@@ -12,18 +12,20 @@ struct SavedWordListView: View {
     @Binding var isSheetVisible: Bool
     
     var body: some View {
-        if (wordsController.words.isEmpty) {
-            Text("Saved Words will appear here.")
-        } else {
-            List {
-                ForEach(wordsController.words) { word in
-                    SavedWordListItemView(word: word,
-                                          onSaveFunction: wordsController.saveCurrentWord,
-                                          onUnsaveFunction: wordsController.unsaveCurrentWord
-                    )
+        List {
+            Section(header:
+                        Text("Saved words:")
+                        .font(Font.custom("CarterOne", size: 16))
+                        .foregroundColor(.gray)) {
+                
+                ForEach(wordsController.savedWords) { word in
+                    SavedWordListItemView(word: word, onToggleSave: {
+                        wordsController.currentWord = word
+                        wordsController.toggleCurrentWordIsSaved()
+                    })
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            wordsController.setCurrentWord(word.word)
+                            wordsController.currentWord = word
                             isSheetVisible = true
                         }
                 }

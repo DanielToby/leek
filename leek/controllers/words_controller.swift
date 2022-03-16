@@ -8,16 +8,30 @@
 import Foundation
 
 class WordsController: ObservableObject {
-    @Published private var model = WordDatabase()
+    @Published var currentWord: Word? // Last defined / opened word. Can be the same as _wordOfTheDay.
+    @Published private(set) var wordOfTheDay: Word?
+    @Published private var wordDatabase = WordDatabase()
     
     init() {
         let wordOfTheDay = "Gastropod"
-        loadDatabase()
         createWordOfTheDay(wordOfTheDay)
+        loadDatabase()
+    }
+    
+    private func createWordOfTheDay(_ word: String) {
+        if (wordDatabase.words.contains(where: { $0.id == word })) {
+            wordOfTheDay = wordDatabase.words.first(where: { $0.id == word })
+        } else {
+            wordOfTheDay = Word(id: word, isSaved: false)
+            queryOxfordDefinitions(query: word) { [self] data in
+                self.wordOfTheDay?.data = data
+                print("Collected data for word '\(word)'.")
+            }
+        }
     }
     
     private func saveDatabase() {
-        WordDatabase.save(words: model.words) { result in
+        WordDatabase.save(words: wordDatabase.words) { result in
             switch result {
             case .failure(let error):
                 fatalError(error.localizedDescription)
@@ -33,66 +47,66 @@ class WordsController: ObservableObject {
             case .failure(let error):
                 fatalError(error.localizedDescription)
             case .success(let words):
-                model.setWords(words)
+                for word in words {
+                    if word.id == wordOfTheDay?.id {
+                        wordOfTheDay?.isSaved = true
+                    }
+                    wordDatabase.addWord(word)
+                }
                 print("Loaded \(words.count) words from database.")
             }
         }
     }
     
-    var words: Array<Word> {
-        return model.words
+    var savedWords: Array<Word> {
+        return wordDatabase.words
     }
-    
-    var currentWord: Word? {
-        return model.currentWord
-    }
-    
-    var wordOfTheDay: Word? {
-        return model.wordOfTheDay
-    }
-    
-    func setCurrentWord(_ word: String) {
-        model.setCurrentWord(word)
-    }
-    
-    func createWordOfTheDay(_ word: String) {
-        model.createWordOfTheDay(word)
-        queryOxfordDefinitions(query: word) { [weak self] data in
-            self?.model.addDataToWordOfTheDay(data)
-            print("Collected data for word '\(word)'.")
-        }
-    }
-    
-    func define(_ word: String) {
-        if (model.words.contains(where: { $0.word == word })) {
-            model.setCurrentWord(word)
+
+    // Sets the currentWord depending on whether it is the word of the day, saved, or a new search.
+    func lookup(_ word: String) {
+        if let wordOfTheDay = wordOfTheDay, wordOfTheDay.id == word {
+            currentWord = wordOfTheDay
+        } else if (wordDatabase.words.contains(where: { $0.id == word })) {
+            currentWord = wordDatabase.words.first(where: { $0.id == word })
         } else {
-            model.createCurrentWord(word)
-            queryOxfordDefinitions(query: word) { [weak self] data in
-                self?.model.addDataToCurrentWord(data)
+            currentWord = Word(id: word, isSaved: false)
+            queryOxfordDefinitions(query: word) { [self] data in
+                self.currentWord?.data = data
                 print("Collected data for word '\(word)'.")
             }
         }
     }
     
-    func saveCurrentWord() {
-        model.saveCurrentWord()
-        saveDatabase()
+    func toggleCurrentWordIsSaved() {
+        currentWord?.isSaved.toggle()
+        if let currentWord = currentWord {
+            if currentWord.isSaved {
+                wordDatabase.addWord(currentWord)
+            } else {
+                wordDatabase.removeWord(currentWord)
+            }
+            saveDatabase()
+            
+            if currentWord.id == wordOfTheDay?.id {
+                wordOfTheDay?.isSaved = currentWord.isSaved
+            }
+        }
     }
     
-    func unsaveCurrentWord() {
-        model.unsaveCurrentWord()
-        saveDatabase()
-    }
-    
-    func saveWordOfTheDay() {
-        model.saveWordOfTheDay()
-        saveDatabase()
-    }
-    
-    func unsaveWordOfTheDay() {
-        model.unsaveWordOfTheDay()
-        saveDatabase()
+    func toggleWordOfTheDayIsSaved() {
+        wordOfTheDay?.isSaved.toggle()
+        if let wordOfTheDay = wordOfTheDay {
+            if wordOfTheDay.isSaved {
+                wordDatabase.addWord(wordOfTheDay)
+            } else {
+                wordDatabase.removeWord(wordOfTheDay)
+            }
+            saveDatabase()
+            
+            if wordOfTheDay.id == currentWord?.id {
+                currentWord?.isSaved = wordOfTheDay.isSaved
+            }
+        }
     }
     
 }

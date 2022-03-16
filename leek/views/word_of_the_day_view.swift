@@ -9,31 +9,31 @@ import SwiftUI
 
 struct WordOfTheDayView: View {
     let word: Word?
-    let onSaveFunction: () -> Void
-    let onUnsaveFunction: () -> Void
+    let onToggleSave: () -> Void
     
     var body: some View {
-        ZStack {
+        VStack(alignment: .leading) {
+            Text("The word of the day is...")
+                .font(Font.custom("CarterOne", size: 16))
+                .foregroundColor(.gray)
             if let word = word {
-                VStack {
-                    Text("Word of the day").bold()
-                    HStack {
-                        Text(word.word)
-                            .font(.system(size: DrawingConstants.listItemTextSize))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                HStack {
+                    Text(word.id)
+                        .font(.system(size: DrawingConstants.listItemTextSize))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    
+                    ZStack {
                         if word.isSaved {
                             Image(systemName: "bookmark.fill").onTapGesture {
-                                onUnsaveFunction()
-                            }.foregroundColor(DrawingConstants.accentColor)
+                                onToggleSave()
+                            }
                         } else {
                             Image(systemName: "bookmark").onTapGesture {
-                                onSaveFunction()
-                            }.foregroundColor(DrawingConstants.accentColor)
+                                onToggleSave()
+                            }
                         }
-                    }.padding(10)
-                }.padding(10)
-            } else {
-                Text("Word definition not found.")
+                    }.foregroundColor(DrawingConstants.accentColor)
+                }
             }
         }
     }

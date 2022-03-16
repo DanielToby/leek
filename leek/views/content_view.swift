@@ -14,37 +14,34 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                WordOfTheDayView(word: wordsController.wordOfTheDay,
-                                 onSaveFunction: wordsController.saveWordOfTheDay,
-                                 onUnsaveFunction: wordsController.unsaveWordOfTheDay)
+            VStack() {
+                WordOfTheDayView(word: wordsController.wordOfTheDay, onToggleSave: wordsController.toggleWordOfTheDayIsSaved)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if let word = wordsController.wordOfTheDay {
-                            wordsController.setCurrentWord(word.word)
-                            isSheetVisible = true;
-                        }
+                        wordsController.currentWord = wordsController.wordOfTheDay
+                        isSheetVisible = true
                     }
-                
+                    .frame(maxHeight: 80)
+                    .padding(30)
+                Spacer()
                 SavedWordListView(wordsController: wordsController, isSheetVisible: $isSheetVisible)
                     .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always), prompt: "Define...")
                     .onSubmit(of: .search) {
                         let cleanedQuery = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
-                        wordsController.define(cleanedQuery)
+                        wordsController.lookup(cleanedQuery)
                         isSheetVisible = true
                     }
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            Text("Leek").font(Font.custom("CarterOne", size: 32))
-                        }
-                    }
-                    .sheet(isPresented: $isSheetVisible) {
-                        NavigationView {
-                            WordView(word: wordsController.currentWord,
-                                     onSaveFunction: wordsController.saveCurrentWord,
-                                     onUnsaveFunction: wordsController.unsaveCurrentWord)
-                        }
-                    }
+            }
+            .sheet(isPresented: $isSheetVisible) {
+                // Visible only when words are selected or searched.
+                NavigationView {
+                    WordView(word: wordsController.currentWord, onToggleSave: wordsController.toggleCurrentWordIsSaved)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Leek").font(Font.custom("CarterOne", size: 32))
+                }
             }
         }
     }
