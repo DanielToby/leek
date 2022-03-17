@@ -27,8 +27,7 @@ struct SavedWordListItemView: View {
                         onToggleSave()
                     }.foregroundColor(DrawingConstants.accentColor)
                 }
-            }.padding(10)
-        }.padding(10)
-            .foregroundColor(.black)
+            }
+        }
     }
 }
