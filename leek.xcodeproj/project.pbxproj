@@ -16,6 +16,7 @@
 		D32BFBE027C41F8900330F5F /* saved_word_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBD827C41F8900330F5F /* saved_word_list_view.swift */; };
 		D32BFBE827C42E1F00330F5F /* oxford_query_utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBE727C42E1F00330F5F /* oxford_query_utility.swift */; };
 		D32BFBEA27C4787400330F5F /* oxford_response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BFBE927C4787400330F5F /* oxford_response.swift */; };
+		D3B234E127E3C8F000779A6C /* word_of_the_day_entries.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B234E027E3C8F000779A6C /* word_of_the_day_entries.swift */; };
 		D3B2806427DC1B2B00C0CA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2805D27DC1B2B00C0CA9D /* Assets.xcassets */; };
 		D3B2806527DC1B2B00C0CA9D /* CarterOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3B2805F27DC1B2B00C0CA9D /* CarterOne-Regular.ttf */; };
 		D3B2806727DC1B2B00C0CA9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		D32BFBD827C41F8900330F5F /* saved_word_list_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saved_word_list_view.swift; sourceTree = "<group>"; };
 		D32BFBE727C42E1F00330F5F /* oxford_query_utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oxford_query_utility.swift; sourceTree = "<group>"; };
 		D32BFBE927C4787400330F5F /* oxford_response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oxford_response.swift; sourceTree = "<group>"; };
+		D3B234E027E3C8F000779A6C /* word_of_the_day_entries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word_of_the_day_entries.swift; sourceTree = "<group>"; };
 		D3B2805D27DC1B2B00C0CA9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3B2805F27DC1B2B00C0CA9D /* CarterOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CarterOne-Regular.ttf"; sourceTree = "<group>"; };
 		D3B2806327DC1B2B00C0CA9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				D32BFBE727C42E1F00330F5F /* oxford_query_utility.swift */,
+				D3B234E027E3C8F000779A6C /* word_of_the_day_entries.swift */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				D3B2807227DE7EEC00C0CA9D /* saved_word_list_item_view.swift in Sources */,
 				D32BFBDA27C41F8900330F5F /* leek_app.swift in Sources */,
 				D32BFBDC27C41F8900330F5F /* word.swift in Sources */,
+				D3B234E127E3C8F000779A6C /* word_of_the_day_entries.swift in Sources */,
 				D32BFBE827C42E1F00330F5F /* oxford_query_utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

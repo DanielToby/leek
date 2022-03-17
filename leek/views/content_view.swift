@@ -23,6 +23,11 @@ struct ContentView: View {
                     }
                     .frame(maxHeight: 80)
                     .padding(30)
+                    .onReceive(NotificationCenter.default.publisher(
+                        for: UIApplication.significantTimeChangeNotification)) { _ in
+                            print("A significant amount of time has passed. Recalculating word of the day.")
+                            wordsController.calculateWordOfTheDay()
+                    }
                 Spacer()
                 SavedWordListView(wordsController: wordsController, isSheetVisible: $isSheetVisible)
                     .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always), prompt: "Define...")

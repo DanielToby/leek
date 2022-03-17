@@ -13,21 +13,8 @@ class WordsController: ObservableObject {
     @Published private var wordDatabase = WordDatabase()
     
     init() {
-        let wordOfTheDay = "Gastropod"
-        createWordOfTheDay(wordOfTheDay)
+        calculateWordOfTheDay()
         loadDatabase()
-    }
-    
-    private func createWordOfTheDay(_ word: String) {
-        if (wordDatabase.words.contains(where: { $0.id == word })) {
-            wordOfTheDay = wordDatabase.words.first(where: { $0.id == word })
-        } else {
-            wordOfTheDay = Word(id: word, isSaved: false)
-            queryOxfordDefinitions(query: word) { [self] data in
-                self.wordOfTheDay?.data = data
-                print("Collected data for word '\(word)'.")
-            }
-        }
     }
     
     private func saveDatabase() {
@@ -62,6 +49,29 @@ class WordsController: ObservableObject {
         return wordDatabase.words
     }
 
+    func calculateWordOfTheDay() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy HH:mm"
+        var indexInWordsList = 0
+        if let startingDate = formatter.date(from: "03/10/2022 00:00") {
+            let numDays = Calendar.current.dateComponents([.day], from: startingDate, to: Date()).day ?? 0
+            indexInWordsList = numDays % s_wordOfTheDayEntries.count
+        }
+        
+        print("Word of the day index: \(indexInWordsList).")
+        let word = s_wordOfTheDayEntries[indexInWordsList]
+        
+        if (wordDatabase.words.contains(where: { $0.id == word })) {
+            wordOfTheDay = wordDatabase.words.first(where: { $0.id == word })
+        } else {
+            wordOfTheDay = Word(id: word, isSaved: false)
+            queryOxfordDefinitions(query: word) { [self] data in
+                self.wordOfTheDay?.data = data
+                print("Collected data for word '\(word)'.")
+            }
+        }
+    }
+    
     // Sets the currentWord depending on whether it is the word of the day, saved, or a new search.
     func lookup(_ word: String) {
         if let wordOfTheDay = wordOfTheDay, wordOfTheDay.id == word {
