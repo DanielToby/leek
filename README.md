@@ -1,9 +1,8 @@
 # leek
 A standalone dictionary app for iOS that remembers what you've searched.
 
-Light                         | Dark
-:----------------------------:|:----------------------------:
-![demo-light](demo-light.gif) | ![demo-dark](demo-dark.gif)
+<img src="demo-light.gif" alt="demo-light" width="200"/>
+<img src="demo-dark.gif" alt="demo-dark" width="200"/>
 
 This app is written in SwiftUI, and leverages [declarative programming](https://github.com/DanielToby/leek/blob/main/leek/model/word_database.swift#:~:text=private(set)%20var%20words%3A%20%5BWord%5D%20%3D%20%5B%5D).
 
