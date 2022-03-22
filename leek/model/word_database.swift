@@ -11,7 +11,6 @@ struct WordDatabase {
     
     // Saved words are loaded from json at initialization.
     // JSON write happens when words are added / removed.
-    // 'currentWord' is stored in memory and represents the current searched / opened word (saved or otherwise)
     
     private(set) var words: [Word] = []
     
